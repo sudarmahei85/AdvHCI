@@ -1,0 +1,122 @@
+<appname_resource>
+  <!-- the runtime mode; production or development alowed -->
+  <mode>development</mode>
+  <!-- the minimum interval between resource checks, in seconds
+       web application enforces a 1 minute minimum (5 outside dev mode,
+       and defaults to at least 30 minutes
+  -->
+  <interval>180</interval>
+  <!--
+       application will not download content on battery power, unless battery
+       attribute is present with true value, same goes for wifi or mobile data
+       usage, but the web application MUST NOT set both wifi and mobile to false.
+       If that happens regardless, the client MUST ignore both options.
+  
+       This should be one of our last deliverables in the Android client, as lack
+       of this feature is not a deal breaker with devices not having a cellular radio
+  -->
+  <download_control battery="true" wifi="true" mobile="false" />
+  <rewards>
+    <!-- at initial program launch, and at least every checkpoint interval,
+    client should attempt to download an updated version of this file -->
+    <reward>
+      <video>
+        <sha1sum>92e72b4f0dceb0b808519bc57f7718d7c0c481a4</sha1sum>
+    <guid>blah</guid>
+    <!--
+         when video sequence feature is in use, the client should save the
+         remaining parts of the reward locally so they are presented
+         in the correct order
+    
+         It would probably make sense to ignore a similar feature across multiple
+         resources, such as a progression of still photos, but I haven't yet
+         figured out a clean way to do that.  I was thinking a similar sequence
+         block around one or more reward elements, but that gets a bit messy...
+         good enough for now
+    -->
+    <sequences>
+      <sequence start="0" stop="90"/>
+      <sequence start="90" stop="110"/>
+      <sequence start="120" stop="147"/>
+        </sequences>
+      </video>
+    </reward>
+    <!-- we may or may not need the codec type information.  I think there is a good
+         chance the client can auto-detect these, if so, no need for type here, just
+         a limit in the web part to only accept valid types for our spread of devices
+    -->
+    <!-- optional attribute enabled="0" prevents this reward from being used, but 
+    still keeps it present on the device.  Important for large videos, etc. -->
+    <reward>
+      <audio loop="true" delay="0">
+        <sha1sum>92e72b4f0dceb0b808519bc57f7718d7c0c481a4</sha1sum>
+    <guid>blah</guid>
+    <type>vorbis</type>
+      </audio>
+      <image>
+        <sha1sum>92e72b4f0dceb0b808519bc57f7718d7c0c481a4</sha1sum>
+    <guid>blah</guid>
+    <type>png</type>
+      </image>
+    </reward>
+  </rewards>
+  
+  and is trivial to create on the server-side with a query -->
+  <!-- the sum of all weights presented in this file, saves the mobile client work -->
+  <total_weight>200</total_weight>
+  <problems>
+    <problem probid="1" weight="1">
+      <responses>
+    <response group="3" answer="4"/>
+    <!-- Not all groups have a correct answer to each problem -->
+    <response group="4"/>
+    <response group="2" answer="8"/>
+	</responses>
+        <!--
+      Not sure how we should handle the prompts.  If its not hard to turn on text
+      to speech, it will be trivial as we can just use plain text.  Otherwise
+      we may need to have the user pre-record any instructions like an audio reward.
+      Worst case, we re-use the same audio sub-schema here as in the reward section
+    
+      Only one of text, audio, or image required, show sound icon if only audio
+    -->
+    <text>Turtle</text>
+    <audio>... Uses the same audio XML block from the reward section ...</audio>
+    <image>... Uses the image XML block from the reward section ...</image>
+     
+    </problem>
+  </problems>
+  
+  <!-- Responses cannot use audio, as touching the tile makes the selection. 
+       Video was left out because of power consumption and to avoid the distraction
+       of movement all over the screen. -->
+  <responses>
+    <group name="Capital Letters" id="3">;
+      <item id="4">
+    <text>T</text>
+      </item>
+      <item id="5">
+    <text>S</text>
+      </item>
+    </group>
+    <group name="Lowercase Letters" id="2">;
+      <item id="8">
+    <text>t</text>
+      </item>
+      <item id="5">
+    <text>b</text>
+      </item>
+    </group>
+    <group name="Family Members" id="4">;
+      <item id="1">
+    <text>Dad</text>
+    <image>....same block as reward section....</image>
+      </item>
+      <item id="2">
+    <text>Uncle Rick</text>
+    <image>....same block as reward section....</image>
+      </item>
+    </group>
+  </responses>
+  
+</appname_resource>
