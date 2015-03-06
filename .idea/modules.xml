@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AdvHCI.iml" filepath="$PROJECT_DIR$/AdvHCI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/childlearning/ChildLearning.iml" filepath="$PROJECT_DIR$/childlearning/ChildLearning.iml" />
     </modules>
   </component>
 </project>

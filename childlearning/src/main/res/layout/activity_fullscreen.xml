@@ -6,27 +6,68 @@
     <!-- The primary full-screen view. This can be replaced with whatever view
          is needed to present your content, e.g. VideoView, SurfaceView,
          TextureView, etc. -->
-    <TextView android:id="@+id/fullscreen_content" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:keepScreenOn="true" android:textColor="#33b5e5"
-        android:textStyle="bold" android:textSize="50sp" android:gravity="center"
-        android:text="@string/dummy_content" />
 
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
-    <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
 
-        <LinearLayout android:id="@+id/fullscreen_content_controls" style="?metaButtonBarStyle"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay" android:orientation="horizontal"
-            tools:ignore="UselessParent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fullscreen_content"
+        android:layout_gravity="center_horizontal|top"
+        android:clickable="false"
+        android:src="@drawable/cow1"
+        android:contentDescription="@string/Image1" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="199dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:id="@+id/fullscreen_content_controls">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
 
             <Button android:id="@+id/dummy_button" style="?metaButtonBarButtonStyle"
-                android:layout_width="0dp" android:layout_height="wrap_content"
-                android:layout_weight="1" android:text="@string/dummy_button" />
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="T"
+                android:clickable="true"
+                android:visibility="visible" />
 
-        </LinearLayout>
-    </FrameLayout>
+            <Button android:id="@+id/dummy_button2" style="?metaButtonBarButtonStyle"
+                android:layout_width="1dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="T2"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button android:id="@+id/dummy_button3" style="?metaButtonBarButtonStyle"
+                android:layout_width="1dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="T3" />
+
+            <Button android:id="@+id/dummy_button4" style="?metaButtonBarButtonStyle"
+                android:layout_width="1dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="T4" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <Button android:id="@+id/dummy_button5" style="?metaButtonBarButtonStyle"
+                android:layout_width="1dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="T5" />
+
+            <Button android:id="@+id/dummy_button6" style="?metaButtonBarButtonStyle"
+                android:layout_width="1dp" android:layout_height="wrap_content"
+                android:layout_weight="1" android:text="T6"/>
+        </TableRow>
+
+    </TableLayout>
 
 </FrameLayout>
